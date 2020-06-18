@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <title>菜单点击滑动</title>
+        <style type="text/css">
+            header {
+                width: 100%;
+                overflow: hidden;
+                white-space: nowrap;
+                overflow-x: scroll;
+            }
+            header::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .nav {
+                display: inline-block;
+                margin-left: 10px;
+                margin-right: 10px;
+                height: 50px;
+                line-height: 50px;
+                
+            }
+        </style>
+        <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="nav">
+                推荐
+            </div>
+            <div class="nav">
+                视频
+            </div>
+            <div class="nav">
+                新闻
+            </div>
+            <div class="nav">
+                体育    
+            </div>
+            <div class="nav">
+                社会
+            </div>
+            <div class="nav">
+                娱乐阿萨德
+            </div>
+            <div class="nav">
+                军事是
+            </div>
+            <div class="nav">
+                人文
+            </div>
+            <div class="nav">
+                地理
+            </div>
+            <div class="nav">
+                历史胜多负少
+            </div>
+        </header>
+        <script type="text/javascript">
+            $(function(){
+                    $(".nav").on("click",function(ev){
+                        // 点击块 距左侧的距离
+                    console.log($(this).position().left);
+                    // 滑块容器 已向左滑动的距离
+                    console.log($(this).parent().scrollLeft())
+                    var moveX = $(this).position().left+$(this).parent().scrollLeft();
+                    console.log(moveX)
+                    var pageX = document.documentElement.clientWidth;
+                    var blockWidth = $(this).width();
+                    
+                    console.log(pageX);
+                    console.log(blockWidth);
+                    var left = moveX-(pageX/2)+(blockWidth/2);
+                    console.log(left);
+                    $(this).css("color","red").siblings().css("color","#000000");
+                    $("header").scrollLeft(left);
+                })
+            });
+        </script>
+    </body>
+</html>
